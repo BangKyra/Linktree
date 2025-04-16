@@ -1,157 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lingpohon - Bang Kyra</title>
-  <style>
-    /* Reset CSS */
-    body, html {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #1a1a1a;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-      background: linear-gradient(135deg, #d32f2f, #b71c1c, #8e0000, #6a0000, #c62828, #ff5c5c);
-      background-size: 400% 400%;
-      animation: gradientAnimation 15s ease infinite;
-    }
-
-    @keyframes gradientAnimation {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    /* Container */
-    .container {
-      background: #222;
-      padding: 40px;
-      width: 90%;
-      max-width: 400px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-      text-align: center;
-    }
-
-    /* Profile Section */
-    .profile-picture {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top;
-      margin: 0 auto 20px;
-      border: 5px solid #d32f2f;
-      transition: border 0.3s ease;
-    }
-
-    .profile-picture:hover {
-      border: 5px solid #b71c1c;
-    }
-
-    .name {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #d32f2f;
-    }
-
-    .bio {
-      font-size: 1.1rem;
-      color: #e0e0e0;
-      margin-bottom: 30px;
-    }
-
-    /* Links Section */
-    .links {
-      margin-top: 30px;
-    }
-
-    .link {
-      display: block;
-      text-decoration: none;
-      color: #fff;
-      background: #b71c1c;
-      margin: 14px 0;
-      padding: 14px 20px;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left 0.3s ease;
-    }
-
-    .link:hover::before {
-      left: 100%;
-    }
-
-    .link:hover {
-      background: #8e0000;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-      transform: translateY(-4px);
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 40px;
-      font-size: 1rem;
-      color: #e0e0e0;
-    }
-
-    .footer a {
-      color: #d32f2f;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Animated LinkTree</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --red: #ff0000;
+            --black: #000000;
+            --gray: #333333;
+            --dark-white: #e0e0e0;
+            --hover-red: #cc0000;
+            --saweria: #f8a61c;
+            --shop: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--dark-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 20%);
+            animation: bgPulse 15s infinite alternate;
+        }
+        
+        @keyframes bgPulse {
+            0% {
+                background-position: 10% 20%, 90% 80%;
+            }
+            100% {
+                background-position: 15% 25%, 85% 75%;
+            }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 2rem auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile {
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-pic-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--red);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-pic-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px dashed var(--red);
+            animation: rotate 20s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+        }
+        
+        h1 {
+            margin: 1rem 0;
+            font-size: 1.8rem;
+            color: var(--dark-white);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .link-item {
+            background-color: rgba(51, 51, 51, 0.7);
+            color: var(--dark-white);
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .link-item:hover::before {
+            left: 100%;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--red);
+            box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .link-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .youtube { color: #ff0000; }
+        .tiktok { color: #69c9d0; }
+        .instagram { color: #e1306c; }
+        .facebook { color: #3b5998; }
+        .twitter { color: #1da1f2; }
+        .saweria { color: var(--saweria); }
+        .shop { color: var(--shop); }
+        
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            color: var(--gray);
+            font-size: 0.8rem;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+            
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-pic-container {
+                width: 130px;
+                height: 130px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Profile Section -->
-    <div class="profile">
-      <img src="c85f95ba-4cf4-49a2-b205-11b332b7348b.jpg" alt="Profile Picture" class="profile-picture">
-      <h1 class="name">Bang Kyra</h1>
-      <p class="bio">Live Streamer | Tech Enthusiast | Content Creator</p>
+    <div class="floating-icons">
+        <!-- These will be added dynamically by JavaScript -->
     </div>
-
-    <!-- Links Section -->
-    <div class="links">
-      <a href="https://saweria.co/KyFianMemb" target="_blank" class="link">Saweria</a>
-      <a href="https://www.tiktok.com/@bangkyra" target="_blank" class="link">TikTok</a>
-      <a href="https://www.instagram.com/kyfiandra/" target="_blank" class="link">Instagram</a>
-      <a href="https://www.youtube.com/@BangKyra" target="_blank" class="link">YouTube</a>
+    
+    <div class="container">
+        <div class="profile">
+            <div class="profile-pic-container">
+                <div class="profile-pic-frame"></div>
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic pulse">
+            </div>
+            <h1>@NamaAnda</h1>
+            <p>Ikuti dan dukung saya di platform berikut</p>
+        </div>
+        
+        <div class="links">
+            <a href="https://www.youtube.com/@BangKyra" target="_blank" class="link-item" style="animation-delay: 0.2s">
+                <i class="fab fa-youtube youtube"></i> YouTube
+            </a>
+            
+            <a href="https://www.tiktok.com/@bangkyra?is_from_webapp=1&sender_device=pc" target="_blank" class="link-item" style="animation-delay: 0.4s">
+                <i class="fab fa-tiktok tiktok"></i> TikTok
+            </a>
+            
+            <a href="https://instagram.com" target="_blank" class="link-item" style="animation-delay: 0.6s">
+                <i class="fab fa-instagram instagram"></i> Instagram
+            </a>
+            
+            <a href="https://facebook.com" target="_blank" class="link-item" style="animation-delay: 0.8s">
+                <i class="fab fa-facebook facebook"></i> Facebook
+            </a>
+            
+            <a href="https://twitter.com" target="_blank" class="link-item" style="animation-delay: 1s">
+                <i class="fab fa-twitter twitter"></i> Twitter (X)
+            </a>
+            
+            <!-- Tambahan Saweria -->
+            <a href="https://saweria.co" target="_blank" class="link-item" style="animation-delay: 1.2s">
+                <i class="fas fa-coins saweria"></i> Saweria
+            </a>
+            
+            <!-- Tambahan Keranjang Jualan -->
+            <a href="https://link-toko-anda.com" target="_blank" class="link-item" style="animation-delay: 1.4s">
+                <i class="fas fa-shopping-cart shop"></i> Toko Saya
+            </a>
+        </div>
+        
+        <div class="footer">
+            © 2023 My Social Links | All Rights Reserved
+        </div>
     </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <p>Made by <a href="#">Bang Kyra</a></p>
-    </div>
-  </div>
+    
+    <script>
+        // Create floating icons
+        const floatingIcons = document.querySelector('.floating-icons');
+        const icons = ['fab fa-youtube', 'fab fa-tiktok', 'fab fa-instagram', 'fab fa-facebook', 'fab fa-twitter', 'fas fa-coins', 'fas fa-shopping-cart'];
+        const colors = ['#ff0000', '#69c9d0', '#e1306c', '#3b5998', '#1da1f2', '#f8a61c', '#4CAF50'];
+        
+        for (let i = 0; i < 20; i++) {
+            const icon = document.createElement('i');
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            const randomColor = colors[icons.indexOf(randomIcon)];
+            
+            icon.className = randomIcon + ' floating-icon';
+            icon.style.color = randomColor;
+            icon.style.fontSize = Math.random() * 20 + 10 + 'px';
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.top = Math.random() * 100 + 'vh';
+            icon.style.animationDuration = Math.random() * 20 + 10 + 's';
+            icon.style.animationDelay = Math.random() * 5 + 's';
+            
+            floatingIcons.appendChild(icon);
+        }
+        
+        // Add hover effect to links
+        const linkItems = document.querySelectorAll('.link-item');
+        linkItems.forEach(item => {
+            item.addEventListener('mouseover', function() {
+                const iconClass = this.querySelector('i').className.split(' ')[1];
+                this.style.backgroundColor = getComputedStyle(this.querySelector('i')).color + '20';
+            });
+            
+            item.addEventListener('mouseout', function() {
+                this.style.backgroundColor = 'rgba(51, 51, 51, 0.7)';
+            });
+        });
+        
+        // Animate links on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.link-item');
+            links.forEach((link, index) => {
+                link.style.animation = `fadeIn 0.5s ease-out ${index * 0.1 + 0.5}s both`;
+            });
+        });
+    </script>
 </body>
 </html>
