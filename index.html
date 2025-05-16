@@ -3,146 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Animated LinkTree</title>
+    <title>GamerLink | Your Gaming Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
         :root {
-            --red: #ff0000;
-            --black: #000000;
-            --gray: #333333;
-            --dark-white: #e0e0e0;
-            --hover-red: #cc0000;
-            --saweria: #f8a61c;
-            --shop: #4CAF50;
+            --primary: #ff3333;
+            --secondary: #ff6666;
+            --dark: #0a0a0a;
+            --light: #f0f0f0;
+            --accent: #ff4d4d;
+            --twitch: #9147ff;
+            --youtube: #ff0000;
+            --discord: #5865f2;
+            --twitter: #1da1f2;
+            --instagram: #e1306c;
+            --tiktok: #69c9d0;
+            --facebook: #1877f2;
+            --saweria: #FFD700;
+            --sociabuzz: #00BFFF;
+            --card-bg: rgba(20, 20, 20, 0.85);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            background-color: var(--black);
-            color: var(--dark-white);
+            background: linear-gradient(135deg, #000000, #1a0000);
+            color: var(--light);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 20%);
-            animation: bgPulse 15s infinite alternate;
+            position: relative;
         }
         
-        @keyframes bgPulse {
-            0% {
-                background-position: 10% 20%, 90% 80%;
-            }
-            100% {
-                background-position: 15% 25%, 85% 75%;
-            }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
         }
         
         .container {
-            width: 90%;
-            max-width: 500px;
-            margin: 2rem auto;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .header {
             text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .profile {
             margin-bottom: 2rem;
-            animation: fadeIn 1.5s ease-out;
+            animation: fadeInDown 1s ease;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .profile-pic-container {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1rem;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .profile-pic {
-            width: 140px;
-            height: 140px;
+        .profile-img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--red);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--card-bg);
+            padding: 5px;
         }
         
-        .profile-pic-frame {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px dashed var(--red);
-            animation: rotate 20s linear infinite;
-            opacity: 0.7;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .profile-pic:hover {
+        .profile-img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 30px rgba(255, 51, 51, 0.8);
         }
         
         h1 {
-            margin: 1rem 0;
-            font-size: 1.8rem;
-            color: var(--dark-white);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            font-size: 2rem;
+            margin: 1rem 0 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
-        p {
-            color: var(--gray);
-            margin-bottom: 2rem;
-            font-size: 1rem;
+        .bio {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            color: #cccccc;
         }
         
         .links {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-bottom: 2rem;
         }
         
         .link-item {
-            background-color: rgba(51, 51, 51, 0.7);
-            color: var(--dark-white);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
             padding: 1rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--light);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         
         .link-item::before {
@@ -152,198 +132,352 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.1), transparent);
             transition: 0.5s;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 51, 51, 0.5);
         }
         
         .link-item:hover::before {
             left: 100%;
         }
         
-        .link-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--red);
-            box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3);
-        }
-        
         .link-item i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
         }
         
-        .youtube { color: #ff0000; }
-        .tiktok { color: #69c9d0; }
-        .instagram { color: #e1306c; }
-        .facebook { color: #3b5998; }
-        .twitter { color: #1da1f2; }
-        .saweria { color: var(--saweria); }
-        .shop { color: var(--shop); }
+        .link-item .link-text {
+            flex: 1;
+        }
         
-        .floating-icons {
-            position: fixed;
+        .link-item .link-text span {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: block;
+            margin-top: 0.2rem;
+            color: #bbbbbb;
+        }
+        
+        .instagram { color: var(--instagram); }
+        .tiktok { color: var(--tiktok); }
+        .facebook { color: var(--facebook); }
+        .twitter { color: var(--twitter); }
+        .discord { color: var(--discord); }
+        .youtube { color: var(--youtube); }
+        .twitch { color: var(--twitch); }
+        .saweria { color: var(--saweria); }
+        .sociabuzz { color: var(--sociabuzz); }
+        .store { color: #32CD32; }
+        .email { color: #FF6347; }
+        .phone { color: #20B2AA; }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            animation: fadeIn 2s ease;
+            color: #aaaaaa;
+        }
+        
+        .particles {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: -1;
             pointer-events: none;
-            z-index: 0;
         }
         
-        .floating-icon {
-            position: absolute;
-            opacity: 0.1;
-            animation: float linear infinite;
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-            }
-        }
-        
-        .footer {
-            margin-top: 2rem;
-            color: var(--gray);
-            font-size: 0.8rem;
-            animation: fadeIn 2s ease-out;
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
+            0%, 100% {
+                transform: translateY(0);
             }
             50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateY(-8px);
             }
         }
         
-        /* Responsive adjustments */
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Responsive */
         @media (max-width: 600px) {
             .container {
-                width: 95%;
-            }
-            
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .profile-pic-container {
-                width: 130px;
-                height: 130px;
+                padding: 1.5rem;
             }
             
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
+            }
+            
+            .profile-img {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .link-item {
+                padding: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="floating-icons">
-        <!-- These will be added dynamically by JavaScript -->
-    </div>
+    <div class="particles" id="particles-js"></div>
     
     <div class="container">
-        <div class="profile">
-            <div class="profile-pic-container">
-                <div class="profile-pic-frame"></div>
-                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic pulse">
-            </div>
-            <h1>@NamaAnda</h1>
-            <p>Ikuti dan dukung saya di platform berikut</p>
-        </div>
+        <header class="header">
+            <img src="https://assets.onecompiler.app/43b7kd3u5/43hv86db4/2.png" alt="Profile" class="profile-img floating">
+            <h1>Kyramissu</h1>
+            <p class="bio">Professional Gamer | Content Creator | Streamer</p>
+        </header>
         
         <div class="links">
-            <a href="https://www.youtube.com/@BangKyra" target="_blank" class="link-item" style="animation-delay: 0.2s">
-                <i class="fab fa-youtube youtube"></i> YouTube
+            <!-- Link Sosial Media -->
+            <a href="https://www.instagram.com/ikyfian" class="link-item" target="_blank" style="animation-delay: 0.1s">
+                <i class="fab fa-instagram instagram"></i>
+                <div class="link-text">
+                    Instagram <span>Follow me for daily updates</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
             
-            <a href="https://www.tiktok.com/@bangkyra?is_from_webapp=1&sender_device=pc" target="_blank" class="link-item" style="animation-delay: 0.4s">
-                <i class="fab fa-tiktok tiktok"></i> TikTok
+            <a href="https://www.tiktok.com/@bangkyra" class="link-item" target="_blank" style="animation-delay: 0.2s">
+                <i class="fab fa-tiktok tiktok"></i>
+                <div class="link-text">
+                    TikTok <span>Short gaming clips and fun content</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
             
-            <a href="https://instagram.com" target="_blank" class="link-item" style="animation-delay: 0.6s">
-                <i class="fab fa-instagram instagram"></i> Instagram
+            <a href="https://www.facebook.com/Kyra.Fian" class="link-item" target="_blank" style="animation-delay: 0.3s">
+                <i class="fab fa-facebook facebook"></i>
+                <div class="link-text">
+                    Facebook <span>Connect with me on Facebook</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
             
-            <a href="https://facebook.com" target="_blank" class="link-item" style="animation-delay: 0.8s">
-                <i class="fab fa-facebook facebook"></i> Facebook
+            <a href="https://www.x.com/iKyfianz" class="link-item" target="_blank" style="animation-delay: 0.4s">
+                <i class="fab fa-twitter twitter"></i>
+                <div class="link-text">
+                    Twitter <span>My thoughts and announcements</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
             
-            <a href="https://twitter.com" target="_blank" class="link-item" style="animation-delay: 1s">
-                <i class="fab fa-twitter twitter"></i> Twitter (X)
+            <a href="https://discord.gg/zPahQnnjTq" class="link-item" target="_blank" style="animation-delay: 0.5s">
+                <i class="fab fa-discord discord"></i>
+                <div class="link-text">
+                    Discord <span>Join our gaming community</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
             
-            <!-- Tambahan Saweria -->
-            <a href="https://saweria.co" target="_blank" class="link-item" style="animation-delay: 1.2s">
-                <i class="fas fa-coins saweria"></i> Saweria
+            <!-- Platform Konten -->
+            <a href="http://www.youtube.com/@BangKyra" class="link-item" target="_blank" style="animation-delay: 0.6s">
+                <i class="fab fa-youtube youtube"></i>
+                <div class="link-text">
+                    YouTube <span>Gameplay, tutorials and more</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
             
-            <!-- Tambahan Keranjang Jualan -->
-            <a href="https://link-toko-anda.com" target="_blank" class="link-item" style="animation-delay: 1.4s">
-                <i class="fas fa-shopping-cart shop"></i> Toko Saya
+            <a href="https://twitch.tv/username" class="link-item" target="_blank" style="animation-delay: 0.7s">
+                <i class="fab fa-twitch twitch"></i>
+                <div class="link-text">
+                    Twitch <span>Live streaming schedule</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            
+            <!-- Donasi -->
+            <a href="https://saweria.co/KyFianMemb" class="link-item" target="_blank" style="animation-delay: 0.8s">
+                <i class="fas fa-coins saweria"></i>
+                <div class="link-text">
+                    Saweria <span>Support my work</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            
+            <a href="https://sociabuzz.com/username" class="link-item" target="_blank" style="animation-delay: 0.9s">
+                <i class="fas fa-hand-holding-heart sociabuzz"></i>
+                <div class="link-text">
+                    Sociabuzz <span>Another way to support</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            
+            <!-- Toko/Keranjang -->
+            <a href="https://yourstore.com" class="link-item" target="_blank" style="animation-delay: 1.0s">
+                <i class="fas fa-shopping-cart store"></i>
+                <div class="link-text">
+                    My Store <span>Merchandise and products</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            
+            <!-- Kontak -->
+            <a href="mailto:kydzaky128@gmail.com" class="link-item" style="animation-delay: 1.1s">
+                <i class="fas fa-envelope email"></i>
+                <div class="link-text">
+                    Email <span>kydzaky128@gmail.com</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            
+            <a href="tel:+6289523394944" class="link-item" style="animation-delay: 1.2s">
+                <i class="fas fa-phone phone"></i>
+                <div class="link-text">
+                    Phone <span>+62 895-2339-4944</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
             </a>
         </div>
         
-        <div class="footer">
-            © 2023 My Social Links | All Rights Reserved
-        </div>
+        <footer class="footer">
+            © 2023 GamerUsername. All Rights Reserved.
+        </footer>
     </div>
     
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Create floating icons
-        const floatingIcons = document.querySelector('.floating-icons');
-        const icons = ['fab fa-youtube', 'fab fa-tiktok', 'fab fa-instagram', 'fab fa-facebook', 'fab fa-twitter', 'fas fa-coins', 'fas fa-shopping-cart'];
-        const colors = ['#ff0000', '#69c9d0', '#e1306c', '#3b5998', '#1da1f2', '#f8a61c', '#4CAF50'];
-        
-        for (let i = 0; i < 20; i++) {
-            const icon = document.createElement('i');
-            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-            const randomColor = colors[icons.indexOf(randomIcon)];
-            
-            icon.className = randomIcon + ' floating-icon';
-            icon.style.color = randomColor;
-            icon.style.fontSize = Math.random() * 20 + 10 + 'px';
-            icon.style.left = Math.random() * 100 + 'vw';
-            icon.style.top = Math.random() * 100 + 'vh';
-            icon.style.animationDuration = Math.random() * 20 + 10 + 's';
-            icon.style.animationDelay = Math.random() * 5 + 's';
-            
-            floatingIcons.appendChild(icon);
-        }
-        
-        // Add hover effect to links
-        const linkItems = document.querySelectorAll('.link-item');
-        linkItems.forEach(item => {
-            item.addEventListener('mouseover', function() {
-                const iconClass = this.querySelector('i').className.split(' ')[1];
-                this.style.backgroundColor = getComputedStyle(this.querySelector('i')).color + '20';
-            });
-            
-            item.addEventListener('mouseout', function() {
-                this.style.backgroundColor = 'rgba(51, 51, 51, 0.7)';
-            });
-        });
-        
-        // Animate links on load
+        // Inisialisasi particles.js
         document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('.link-item');
-            links.forEach((link, index) => {
-                link.style.animation = `fadeIn 0.5s ease-out ${index * 0.1 + 0.5}s both`;
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 60,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ff3333"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.3,
+                        "random": true,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ff3333",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.5,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 0.5
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+            
+            // Animasi untuk link-item
+            const linkItems = document.querySelectorAll('.link-item');
+            linkItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1 + 0.1}s`;
+                
+                // Efek hover yang lebih halus
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-3px)';
+                    item.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.3)';
+                    item.querySelector('i:first-child').style.transform = 'scale(1.1)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0)';
+                    item.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+                    item.querySelector('i:first-child').style.transform = 'scale(1)';
+                });
             });
         });
     </script>
